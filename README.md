@@ -12,14 +12,41 @@ npm i --silent svf-lib --prefix ${HOME}
 ```
 git clone https://github.com/SVF-tools/SVF-example.git
 ```
+## 3. Install repository
+```
+cd noce_modules/svf-lib
+./llvm_install.sh   
+```
+```
+For mac arm64 system replace two files
+node_modules/SVF/Release-build/svf/libSvfCore.a
+node_modules/SVF/Release-build/svf-llvm/libSvfLLVM.a
+to the given file in MacLib respectively
+```
+```
+For mac arm64 system need to use 
 
-## 3. Setup SVF environment and create python lib
+brew install llvm@14 
+
+install the correct llvm for the arm64 then open the terminal and input
+
+cd /opt/homebrew/Cellar
+
+then copy the file llvm@14 and paste it into node_modules
+and replace the original llvm-14.0.0.obj
+```
+
+## 4. Setup SVF environment and create python lib
 ```
 source ./env.sh
 cmake . && make
 ```
-## 4. Analyze a bc file using svf-ex.py
+## 5. Analyze a bc file using svf-ex.py
 ```
 clang -S -c -g -fno-discard-value-names -emit-llvm example.c -o example.ll
-python3 ./src/svf-ex.py example.ll
+python3 ./src/svfpy/svf-ex.py example.ll
+```
+
+```
+the path of node_modules is in the /User/@username/node_modules
 ```
